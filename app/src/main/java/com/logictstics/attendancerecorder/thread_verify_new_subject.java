@@ -25,9 +25,17 @@ public class thread_verify_new_subject {
         else
          comp.on_complete(false,"");
     }
+    public static  void database_store_subject(String name,String code,int atten,database_manager dbms,completed_verification cv)
+    {
+        subject_handler sub=new subject_handler(name,code,0,0,0,0,0,atten,0,0,0,0,0,0,0,0,0);
+        boolean b = dbms.add_new_subject(sub);
+        cv.on_complete_database_new_subject(b);
+
+    }
 
 }
 interface completed_verification
 {
     void on_complete(boolean err,String error);
+    void on_complete_database_new_subject(boolean success);
 }

@@ -77,24 +77,40 @@ public class add_subject extends AppCompatActivity {
                         else
                         {
                             database_manager dbms=new database_manager(add_subject.this);
-                            subject_handler sub=new subject_handler(name,code,0,0,0,0,0,atten,0,0,0,0,0,0,0,0,0);
-                            boolean b = dbms.add_new_subject(sub);
-                            if(b)
-                            {
-                                Toast.makeText(add_subject.this, "Subject added successfully", Toast.LENGTH_LONG).show();
-                                loading.setVisibility(View.INVISIBLE);
-                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                            }
-                            else
-                            {
-                                loading.setVisibility(View.INVISIBLE);
-                                Toast.makeText(add_subject.this, "Subject could not be added", Toast.LENGTH_LONG).show();
-                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                            }
+                            thread_verify_new_subject.database_store_subject(name, code,atten, dbms, new completed_verification() {
+                                @Override
+                                public void on_complete(boolean err, String error) {
+                                }
+                                @Override
+                                public void on_complete_database_new_subject( boolean success) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if(success)
+                                        {
+                                            Toast.makeText(add_subject.this, "Subject added successfully", Toast.LENGTH_LONG).show();
+                                            loading.setVisibility(View.INVISIBLE);
+                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                        }
+                                        else
+                                        {
+                                            loading.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(add_subject.this, "Subject could not be added", Toast.LENGTH_LONG).show();
+                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                        }
+                                    }
+                                });
+                                }
+                            });
                         }
 
                     }
+                    @Override
+                    public void on_complete_database_new_subject( boolean success) {
+
+                    }
                 }, add_subject.this);
+
             }
         });
     }

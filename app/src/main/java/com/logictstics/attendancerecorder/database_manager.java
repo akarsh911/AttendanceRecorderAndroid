@@ -194,4 +194,8 @@ public  class database_manager  extends SQLiteOpenHelper {
         db.close();
         return  subs;
     }
+    public void add_new_class_time_table(classes_handler cls)
+    {
+
+    }
 }

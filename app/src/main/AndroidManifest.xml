@@ -14,8 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AttendanceRecorder.NoActionBar">
         <activity
+            android:name=".user_basic_details"
+            android:exported="false" />
+        <activity
             android:name=".add_classes_timetable"
-
             android:exported="false" />
         <activity
             android:name=".add_subject"
