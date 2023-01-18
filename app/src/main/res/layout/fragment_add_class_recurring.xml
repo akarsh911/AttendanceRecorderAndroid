@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".add_class_recurring">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="25dp"
+            android:paddingBottom='5dp'
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time :"
+                android:layout_gravity="center"
+                android:textColor="#454444"
+                android:textSize="18sp" />
+
+            <LinearLayout android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+
+            </LinearLayout>
+            <EditText
+                android:id="@+id/cl_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="0.9"
+                android:text="08:00 AM"
+                android:inputType="time" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="#DDD7D7"
+            android:text="."
+            android:textColor="#101010"
+            android:textSize="1dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom='5dp'
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Days :"
+                android:paddingStart="25dp"
+                android:textColor="#454444"
+                android:textSize="18sp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:padding="25dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/bt_days_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/circle_text_view_white"
+                    android:textColor="#716868"
+                    android:gravity="center"
+                    android:text="M" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" >
+                </Space>
+                <TextView
+                    android:id="@+id/bt_days_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/circle_text_view_white"
+                    android:textColor="#716868"
+                    android:gravity="center"
+                    android:text="Tu" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" >
+                </Space>
+                <TextView
+                    android:id="@+id/bt_days_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/circle_text_view_white"
+                    android:textColor="#716868"
+                    android:gravity="center"
+                    android:text="W" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" >
+                </Space>
+                <TextView
+                    android:id="@+id/bt_days_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/circle_text_view_white"
+                    android:textColor="#716868"
+                    android:gravity="center"
+                    android:text="Th" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" >
+                </Space>
+                <TextView
+                    android:id="@+id/bt_days_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/circle_text_view_white"
+                    android:textColor="#716868"
+                    android:gravity="center"
+                    android:text="F" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" >
+                </Space>
+
+                <TextView
+                    android:id="@+id/bt_days_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/circle_text_view_white"
+                    android:textColor="#716868"
+                    android:gravity="center"
+                    android:text="S" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" >
+                </Space>
+                <TextView
+                    android:id="@+id/bt_days_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@drawable/circle_text_view_white"
+                    android:textColor="#716868"
+                    android:gravity="center"
+                    android:text="Su" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="#DDD7D7"
+                android:text="."
+                android:textColor="#101010"
+                android:textSize="1dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

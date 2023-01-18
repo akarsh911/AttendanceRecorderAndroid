@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_class_non_recurring">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/cl_time_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="25dp"
+            android:paddingBottom='5dp'
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time :"
+                android:layout_gravity="center"
+                android:textColor="#454444"
+                android:textSize="18sp" />
+
+            <LinearLayout android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+
+            </LinearLayout>
+            <EditText
+                android:id="@+id/cl_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="0.9"
+                android:text="08:00 AM"
+                android:inputType="time" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="#DDD7D7"
+            android:text="."
+            android:textColor="#101010"
+            android:textSize="1dp" />
+        <LinearLayout
+            android:id="@+id/cl_date_holde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="25dp"
+            android:paddingBottom='5dp'
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date :"
+                android:layout_gravity="center"
+                android:textColor="#454444"
+                android:textSize="18sp" />
+
+            <LinearLayout android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/cl_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="0.9"
+                android:inputType="date"
+
+                android:text="23/12/2022"
+                 />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="#DDD7D7"
+            android:text="."
+            android:textColor="#101010"
+            android:textSize="1dp" />
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

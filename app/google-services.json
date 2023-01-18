@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "411518217758",
+    "project_id": "attendance-recorder-10cba",
+    "storage_bucket": "attendance-recorder-10cba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411518217758:android:cb2dc28d44c4565aba480f",
+        "android_client_info": {
+          "package_name": "com.logictstics.attendancerecorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411518217758-bropgq4qu69r90nk9p7vano7bgakhiph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChJBW8jFJH2sVjViylOn3HcDtKfXlw3hE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411518217758-bropgq4qu69r90nk9p7vano7bgakhiph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

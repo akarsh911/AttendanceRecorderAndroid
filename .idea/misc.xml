@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable-anydpi/ic_action_add.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable-anydpi/ic_action_left.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable-anydpi/ic_action_right.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/app_logo.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/boder_color.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/border_color_black.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_blue.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_green.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_shape.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_text_view_blue.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_text_view_white.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_white.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circular_progress_bar.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/rounded_text_view.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_add_classes_timetable.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_add_subject.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_home_page.xml" value="0.136" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_splash_screen_logo.xml" value="0.25" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_welcome_slider.xml" value="0.25" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/fragment_add_class_non_recurring.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/fragment_add_class_recurring.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/fragment_bottom_bar_home.xml" value="0.1" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/sample_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/spalsh_screen.xml" value="0.152" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/subject_card_view.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
