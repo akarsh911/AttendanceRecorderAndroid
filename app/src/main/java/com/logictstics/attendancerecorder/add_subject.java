@@ -15,7 +15,6 @@ public class add_subject extends AppCompatActivity {
     public EditText sub_name;
     public EditText sub_code;
     public EditText sub_attend;
-    boolean pressedUp = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,9 +65,10 @@ public class add_subject extends AppCompatActivity {
                 String name = sub_name.getText().toString();
                 String code = (sub_code.getText().toString()).toUpperCase();
                 int atten = Integer.parseInt(sub_attend.getText().toString());
-                thread_verify_new_subject.verify_subject(name, code, atten, new completed_verification() {
+                thread_verify_new_subject.verify_subject(name, code, atten, new completed_verification_subject() {
                     @Override
                     public void on_complete(boolean err, String error) {
+                        runOnUiThread(() -> {
                         if(err) {
                             Toast.makeText(add_subject.this, error, Toast.LENGTH_LONG).show();
                             loading.setVisibility(View.INVISIBLE);
@@ -76,39 +76,13 @@ public class add_subject extends AppCompatActivity {
                         }
                         else
                         {
-                            database_manager dbms=new database_manager(add_subject.this);
-                            thread_verify_new_subject.database_store_subject(name, code,atten, dbms, new completed_verification() {
-                                @Override
-                                public void on_complete(boolean err, String error) {
-                                }
-                                @Override
-                                public void on_complete_database_new_subject( boolean success) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if(success)
-                                        {
-                                            Toast.makeText(add_subject.this, "Subject added successfully", Toast.LENGTH_LONG).show();
-                                            loading.setVisibility(View.INVISIBLE);
-                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                                        }
-                                        else
-                                        {
-                                            loading.setVisibility(View.INVISIBLE);
-                                            Toast.makeText(add_subject.this, "Subject could not be added", Toast.LENGTH_LONG).show();
-                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                                        }
-                                    }
-                                });
-                                }
-                            });
-                        }
+                                    Toast.makeText(add_subject.this, "Subject added successfully", Toast.LENGTH_LONG).show();
+                                    loading.setVisibility(View.INVISIBLE);
+                                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        }});
 
                     }
-                    @Override
-                    public void on_complete_database_new_subject( boolean success) {
 
-                    }
                 }, add_subject.this);
 
             }

@@ -1,6 +1,5 @@
 package com.logictstics.attendancerecorder;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -39,7 +38,20 @@ public class welcome_slider extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             //the activity is complete and now load the home page
-                            startActivity(new Intent(welcome_slider.this, home_page.class));
+                            database_manager dbms=new database_manager(getApplicationContext());
+                            if(dbms.check_user_exists())
+                            {
+                                Intent intent = new Intent(welcome_slider.this, home_page.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else
+                            {
+                                Intent intent = new Intent(welcome_slider.this, user_basic_details.class);
+                                startActivity(intent);
+                                finish();
+                            }
+
                         }
                     });
                 }
@@ -65,7 +77,6 @@ public class welcome_slider extends AppCompatActivity {
         sharedPreferencesEditor.putBoolean(
                 "COMPLETED_ONBOARDING_PREF_NAME", true);
         sharedPreferencesEditor.apply();
-        Context applicationContext= getApplicationContext();
     }
 
 }

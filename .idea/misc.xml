@@ -12,6 +12,7 @@
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/border_color_black.xml" value="0.1680921052631579" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle.xml" value="0.1680921052631579" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_blue.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_blue_big.xml" value="0.1680921052631579" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_green.xml" value="0.1680921052631579" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_shape.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circle_text_view_blue.xml" value="0.1680921052631579" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/circular_progress_bar.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/rounded_text_view.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/drawable/user_circle.xml" value="0.1" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_add_classes_timetable.xml" value="0.15789473684210525" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_add_subject.xml" value="0.15789473684210525" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_home_page.xml" value="0.136" />

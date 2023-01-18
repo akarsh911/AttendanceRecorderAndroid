@@ -30,6 +30,7 @@
             android:exported="true" />
         <activity
             android:name=".splash_screen_logo"
+            android:noHistory = "false"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

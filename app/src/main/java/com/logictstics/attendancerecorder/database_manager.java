@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public  class database_manager  extends SQLiteOpenHelper {
 
@@ -39,6 +40,10 @@ public  class database_manager  extends SQLiteOpenHelper {
     public static final String COLUMN_DAY = "DAY";
     public static final String COLUMN_LTP = "LTP";
     public static final String COLUMN_REPEAT = "REPEAT";
+    public static final String COLUMN_USER_NAME = "USER_NAME";
+    public static final String COLUMN_SEMESTER_CODE = "SEMESTER_CODE";
+    public static final String COLUMN_SEMESTER_START_DATE = "SEMESTER_START_DATE";
+    public static final String COLUMN_SEMESTER_END_DATE = "SEMESTER_END_DATE";
 
     public database_manager(@Nullable Context context) {
         super(context,"attendance.db", null , 1);
@@ -52,6 +57,8 @@ public  class database_manager  extends SQLiteOpenHelper {
         create_table= "CREATE TABLE HISTORY (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SUBJECT_NAME + " TEXT," + COLUMN_SUBJECT_CODE + " TEXT," + COLUMN_TIME + " TEXT," + COLUMN_DATE + " TEXT," + COLUMN_STATE + " TEXT)";
         db.execSQL(create_table);
         create_table= "CREATE TABLE CLASSES (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SUBJECT_NAME + " TEXT," + COLUMN_SUBJECT_CODE + " TEXT," + COLUMN_TIME + " TEXT," + COLUMN_DAY + " TEXT," + COLUMN_LTP + " TEXT, " + COLUMN_REPEAT + " TEXT," + COLUMN_DATE + "TEXT )";
+        db.execSQL(create_table);
+        create_table= "CREATE TABLE USER (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT," + COLUMN_SEMESTER_CODE + " TEXT," + COLUMN_SEMESTER_START_DATE + " TEXT," + COLUMN_SEMESTER_END_DATE + " TEXT)";
         db.execSQL(create_table);
     }
     //work on new version of app
@@ -152,7 +159,8 @@ public  class database_manager  extends SQLiteOpenHelper {
         int count=0;
         String query="SELECT * FROM SUBJECTS WHERE "+COLUMN_SUBJECT_CODE+"='"+code+"'";
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery(query,null);
+        try(Cursor cursor=db.rawQuery(query,null))
+        {
         if(cursor.moveToFirst())
         {
             do{
@@ -161,11 +169,16 @@ public  class database_manager  extends SQLiteOpenHelper {
         }
         else
         {
-
+            return false;
         }
         cursor.close();
         db.close();
         return count != 0;
+    }
+       catch (Exception e)
+       {
+           return false;
+       }
     }
     public ArrayList<String> subject_name()
     {
@@ -194,8 +207,73 @@ public  class database_manager  extends SQLiteOpenHelper {
         db.close();
         return  subs;
     }
+    public boolean add_new_user(user_detail_handler user)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        if(db==null)
+            return false;
+        ContentValues cv=new ContentValues();
+        cv.put(COLUMN_USER_NAME,user.getName());
+        cv.put(COLUMN_SEMESTER_CODE,user.getSem());
+        cv.put(COLUMN_SEMESTER_START_DATE,user.getStart_date());
+        cv.put(COLUMN_SEMESTER_END_DATE,user.getEnd_date());
+        long cls = db.insert("USER", null, cv);
+        return cls != -1;
+    }
     public void add_new_class_time_table(classes_handler cls)
     {
 
+    }
+    public boolean check_user_exists()
+    {
+        int count=0;
+        String query="SELECT * FROM USER";
+        SQLiteDatabase db=this.getReadableDatabase();
+        try(Cursor cursor=db.rawQuery(query,null))
+        {
+            if(cursor.moveToFirst())
+            {
+                do{
+                    count++;
+                }while(cursor.moveToNext());
+            }
+            else
+            {
+                return false;
+            }
+            cursor.close();
+            db.close();
+            return count != 0;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+    public String get_user_name()
+    {
+        String name;
+        String query="SELECT "+COLUMN_USER_NAME+" FROM USER";
+        SQLiteDatabase db=this.getReadableDatabase();
+        try(Cursor cursor=db.rawQuery(query,null))
+        {
+            if(cursor.moveToFirst())
+            {
+                do{
+                    name= cursor.getString(0).toString().toUpperCase(Locale.ROOT);
+                }while(cursor.moveToNext());
+            }
+            else
+            {
+                return "false";
+            }
+            cursor.close();
+            db.close();
+            return name;
+        }
+        catch (Exception e)
+        {
+            return "false";
+        }
     }
 }

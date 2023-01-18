@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,7 +42,16 @@ public class bottom_bar_home extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_bottom_bar_home, container, false);
         RecyclerView courseRV = v.findViewById(R.id.idRVCourse);
+        TextView user_circle=v.findViewById(R.id.user_circle);
+        database_manager dbms=new database_manager(getActivity());
+        char firstLetter=dbms.get_user_name().charAt(0);
+        user_circle.setText(Character.toString(firstLetter));
+        user_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         // Here, we have created new array list and added data to it
         ArrayList<subject_cards> subject_cardsArrayList = new ArrayList<subject_cards>();
         subject_cardsArrayList.add(new subject_cards("Computer Programming", "4","75","15","5"));

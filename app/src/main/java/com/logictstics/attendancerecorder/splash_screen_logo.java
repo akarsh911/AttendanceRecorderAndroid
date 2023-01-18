@@ -49,6 +49,7 @@ public class splash_screen_logo extends AppCompatActivity {
                             public void run() {
                                 Intent intent = new Intent(splash_screen_logo.this, welcome_slider.class);
                                 startActivity(intent);
+                                finish();
                             }
                         });
 
@@ -58,8 +59,20 @@ public class splash_screen_logo extends AppCompatActivity {
             }
             else
             {
-                Intent intent = new Intent(splash_screen_logo.this, home_page.class);
-                startActivity(intent);
+                database_manager dbms=new database_manager(getApplicationContext());
+                if(dbms.check_user_exists())
+                {
+                    Intent intent = new Intent(splash_screen_logo.this, home_page.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    Intent intent = new Intent(splash_screen_logo.this, user_basic_details.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
 
         } else {

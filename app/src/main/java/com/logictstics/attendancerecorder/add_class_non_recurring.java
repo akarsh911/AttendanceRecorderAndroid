@@ -10,6 +10,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import java.util.Calendar;
@@ -119,7 +120,7 @@ returnData_non rd;
         disableEditText(date);
         return v;
     }
-    private void disableEditText(EditText editText) {
+    public void disableEditText(@NonNull EditText editText) {
         editText.setFocusable(false);
        // editText.setEnabled(false);
         editText.setCursorVisible(false);
