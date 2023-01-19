@@ -3,7 +3,6 @@ package com.logictstics.attendancerecorder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,5 +23,14 @@ public class home_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
     }
 }

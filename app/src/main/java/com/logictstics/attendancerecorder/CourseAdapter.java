@@ -1,23 +1,30 @@
 package com.logictstics.attendancerecorder;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
 
     private final Context context;
-    private final ArrayList<subject_cards> subject_cardsArrayList;
+    private final ArrayList<daily_subject_handler> subject_cardsArrayList;
 
     // Constructor
-    public CourseAdapter(Context context, ArrayList<subject_cards> subject_cardsArrayList) {
+    public CourseAdapter(Context context, ArrayList<daily_subject_handler> subject_cardsArrayList) {
         this.context = context;
         this.subject_cardsArrayList = subject_cardsArrayList;
     }
@@ -32,15 +39,42 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CourseAdapter.ViewHolder holder, int position) {
         // to set data to textview and imageview of each card layout
-        subject_cards model = subject_cardsArrayList.get(position);
-        holder.courseNameTV.setText(model.getCourse_name());
-       holder.courseRatingTV.setText(model.getCourse_code());
-        holder.courseIV.setText(model.getCourse_left());
-        holder.percent.setText(model.getCourse_attendance());
-      holder.leaves.setText(model.getCourse_leaves());
+        daily_subject_handler model = subject_cardsArrayList.get(position);
+        holder.courseNameTV.setText(model.getName()+"-"+model.getLtp());
+       holder.courseRatingTV.setText(model.getCode());
+        holder.courseIV.setText(Integer.toString(model.getClass_left()));
+        holder.percent.setText(model.getAttendance());
+      holder.leaves.setText(Integer.toString(model.getLeaves_left()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(model.getDate(), formatter);
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        SimpleDateFormat formatter2 = new SimpleDateFormat("dd MMMM yyyy");
+       String strDate = formatter2.format(date);
+        holder.date.setText(strDate);
+        holder.time.setText(model.getTime());
+        holder.present.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        holder.cancelled.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        holder.absent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -56,6 +90,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         private final TextView courseRatingTV;
         private final TextView percent;
         private final TextView leaves;
+        private final TextView date;
+        private final TextView time;
+        private final Button present;
+        private final Button absent;
+        private final Button cancelled;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -64,6 +103,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             courseIV = itemView.findViewById(R.id.subject_card_total);
             percent = itemView.findViewById(R.id.subject_card_percent);
             leaves = itemView.findViewById(R.id.subject_card_leaves);
+            date=itemView.findViewById(R.id.subject_card_date);
+            time=itemView.findViewById(R.id.subject_card_time);
+            present=itemView.findViewById(R.id.sbj_crd_present);
+            absent=itemView.findViewById(R.id.sbj_crd_absent);
+            cancelled=itemView.findViewById(R.id.sbj_crd_cancelled);
         }
     }
 

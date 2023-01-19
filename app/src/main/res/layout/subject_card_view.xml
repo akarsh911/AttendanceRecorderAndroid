@@ -28,8 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="100"
-            android:progress="65"
-            />
+            android:progress="65" />
 
 
         <TextView
@@ -170,6 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
+                    android:id="@+id/subject_card_date"
                     android:text="15 th January 2022"
                     android:textColor="#020202"
                     android:autoSizeTextType="uniform"
@@ -177,6 +177,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/subject_card_time"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -208,7 +209,7 @@
                     android:textColor="#ffffff" />
 
                 <Button
-                    android:id="@+id/wlcm_sldr_prev"
+                    android:id="@+id/sbj_crd_absent"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.8"
@@ -224,7 +225,7 @@
                     android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/wlcm_sldr_next"
+                    android:id="@+id/sbj_crd_cancelled"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.9"
@@ -240,7 +241,7 @@
                     android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/wlcm_sldr_can"
+                    android:id="@+id/sbj_crd_present"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.8"

@@ -88,6 +88,23 @@ returnData_non rd;
                         selectedmonth = selectedmonth + 1;
                         date.setText("" + selectedday + "/" + selectedmonth + "/" + selectedyear);
                         rd.handel_data_non_recurring_date("" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+                        if(selectedmonth<10)
+                        {
+                            date.setText("" + selectedday + "/0" + selectedmonth + "/" + selectedyear);
+                            rd.handel_data_non_recurring_date("" + selectedday + "/0" + selectedmonth + "/" + selectedyear);
+                        }
+                        if(selectedday<10)
+                        {
+                            date.setText("0" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+                            rd.handel_data_non_recurring_date("0" + selectedday + "/" + selectedmonth + "/" + selectedyear);
+                        }
+                        if (selectedday < 10 && selectedmonth < 10) {
+
+                            date.setText("0" + selectedday + "/0" + selectedmonth + "/" + selectedyear);
+                            rd.handel_data_non_recurring_date("0" + selectedday + "/0" + selectedmonth + "/" + selectedyear);
+                        }
+
+
                     }
                 }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
@@ -107,8 +124,21 @@ returnData_non rd;
                 mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                       time.setText( selectedHour + ":" + selectedMinute);
-                       rd.handel_data_recurring_time(selectedHour + ":" + selectedMinute);
+                        if(selectedHour<10)
+                        {
+                            time.setText( "0"+selectedHour + ":" + selectedMinute);
+                            rd.handel_data_recurring_time("0"+selectedHour + ":" + selectedMinute);
+                        }
+                        if(selectedMinute<10)
+                        {
+                            time.setText( selectedHour + ":0" + selectedMinute);
+                            rd.handel_data_recurring_time(""+selectedHour + ":0" + selectedMinute);
+                        }
+                        if(selectedHour<10&&selectedMinute<10)
+                        {
+                            time.setText("0"+ selectedHour + ":0" + selectedMinute);
+                            rd.handel_data_recurring_time("0"+selectedHour + ":0" + selectedMinute);
+                        }
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");

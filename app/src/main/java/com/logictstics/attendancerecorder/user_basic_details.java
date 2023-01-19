@@ -71,8 +71,19 @@ public class user_basic_details extends AppCompatActivity {
                         // TODO Auto-generated method stub
                         /*      Your code   to get date and time    */
                         selectedmonth = selectedmonth + 1;
+                        sel_date_start="" + selectedday + "/" + selectedmonth + "/" + selectedyear;
+                        if(selectedmonth<10)
+                        {
+                            sel_date_start="" + selectedday + "/0" + selectedmonth + "/" + selectedyear;
+                        }
+                        if(selectedday<10)
+                        {
+                            sel_date_start="0" + selectedday + "/" + selectedmonth + "/" + selectedyear;
+                        }
+                        if (selectedday < 10 && selectedmonth < 10) {
 
-                       sel_date_start="" + selectedday + "/" + selectedmonth + "/" + selectedyear;
+                            sel_date_start="0" + selectedday + "/0" + selectedmonth + "/" + selectedyear;
+                        }
                         date_start.setText(sel_date_start);
                     }
                 }, mYear, mMonth, mDay);
@@ -97,9 +108,20 @@ public class user_basic_details extends AppCompatActivity {
                         // TODO Auto-generated method stub
                         /*      Your code   to get date and time    */
                         selectedmonth = selectedmonth + 1;
-
                         sel_date_end="" + selectedday + "/" + selectedmonth + "/" + selectedyear;
-                        date_end.setText(sel_date_start);
+                        if(selectedmonth<10)
+                        {
+                            sel_date_end="" + selectedday + "/0" + selectedmonth + "/" + selectedyear;
+                        }
+                        if(selectedday<10)
+                        {
+                            sel_date_end="0" + selectedday + "/" + selectedmonth + "/" + selectedyear;
+                        }
+                        if (selectedday < 10 && selectedmonth < 10) {
+
+                            sel_date_end="0" + selectedday + "/0" + selectedmonth + "/" + selectedyear;
+                        }
+                        date_end.setText(sel_date_end);
                     }
                 }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");

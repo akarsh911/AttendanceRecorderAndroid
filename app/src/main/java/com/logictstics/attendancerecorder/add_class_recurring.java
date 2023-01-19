@@ -79,8 +79,21 @@ public class add_class_recurring extends Fragment {
                 mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        time.setText( selectedHour + ":" + selectedMinute);
-                        rd.handel_data_recurring_time(selectedHour + ":" + selectedMinute);
+                        if(selectedHour<10)
+                        {
+                            time.setText( "0"+selectedHour + ":" + selectedMinute);
+                            rd.handel_data_recurring_time("0"+selectedHour + ":" + selectedMinute);
+                        }
+                        if(selectedMinute<10)
+                        {
+                            time.setText( selectedHour + ":0" + selectedMinute);
+                            rd.handel_data_recurring_time(""+selectedHour + ":0" + selectedMinute);
+                        }
+                        if(selectedHour<10&&selectedMinute<10)
+                        {
+                            time.setText("0"+ selectedHour + ":0" + selectedMinute);
+                            rd.handel_data_recurring_time("0"+selectedHour + ":0" + selectedMinute);
+                        }
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -96,13 +109,13 @@ public class add_class_recurring extends Fragment {
         TextView tv5=v.findViewById(R.id.bt_days_5);
         TextView tv6=v.findViewById(R.id.bt_days_6);
         TextView tv7=v.findViewById(R.id.bt_days_7);
-        textViewChange(tv1,0);
-        textViewChange(tv2,1);
-        textViewChange(tv3,2);
-        textViewChange(tv4,3);
-        textViewChange(tv5,4);
-        textViewChange(tv6,5);
-        textViewChange(tv7,6);
+        textViewChange(tv1,1);
+        textViewChange(tv2,2);
+        textViewChange(tv3,3);
+        textViewChange(tv4,4);
+        textViewChange(tv5,5);
+        textViewChange(tv6,6);
+        textViewChange(tv7,0);
         // Inflate the layout for this fragment
         return v;
     }
