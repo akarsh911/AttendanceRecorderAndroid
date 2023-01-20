@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class bottom_bar_home extends Fragment {
-    ArrayList<daily_subject_handler> subject_cardsArrayList;
+    ArrayList<subject_handler> subject_cardsArrayList;
     public bottom_bar_home() {
         // Required empty public constructor
     }
@@ -42,6 +43,8 @@ public class bottom_bar_home extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_bottom_bar_home, container, false);
+        TextView attendance_tv=v.findViewById(R.id.overall_attendance_tv);
+        ProgressBar pg=v.findViewById(R.id.overall_attendance_progress);
         RecyclerView courseRV = v.findViewById(R.id.idRVCourse);
         TextView user_circle=v.findViewById(R.id.user_circle);
         database_manager dbms=new database_manager(getActivity());
@@ -54,24 +57,31 @@ public class bottom_bar_home extends Fragment {
                 startActivity(intent);
             }
         });
+      String overall_attendance=new database_manager(getActivity()).get_value_sub_string(database_manager.COLUMN_ATTENDANCE,"OVERALL");
+      attendance_tv.setText(overall_attendance);
+      pg.setProgress(Integer.parseInt(overall_attendance.substring(0,overall_attendance.indexOf('%'))));
         // Here, we have created new array list and added data to it
-       subject_cardsArrayList = new ArrayList<daily_subject_handler>();
-        thread_get_todays_class.get_list(getActivity(), new thread_get_todays_class.thread_today_class_on_complete() {
-            @Override
-            public void print_list(ArrayList<daily_subject_handler> list) {
-                subject_cardsArrayList=list;
-                //subject_cardsArrayList.add(list);
-                CourseAdapter courseAdapter = new CourseAdapter(v.getContext(), subject_cardsArrayList);
+       subject_cardsArrayList = new ArrayList<subject_handler>();
+       thread_get_all_subjects.get_list(getActivity(), new completed_get_subjects() {
+           @Override
+           public void print_list(ArrayList<subject_handler> list) {
 
-                // below line is for setting a layout manager for our recycler view.
-                // here we are creating vertical list so we will provide orientation as vertical
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(v.getContext(), LinearLayoutManager.VERTICAL, false);
+              getActivity().runOnUiThread(new Runnable() {
+                  @Override
+                  public void run() {
+                    //  Toast.makeText(getActivity(), "aa: "+list.get(1).toString(), Toast.LENGTH_SHORT).show();
+                      subject_adapter_home_page adapter_home_page=new subject_adapter_home_page(v.getContext(), list);
+                      LinearLayoutManager linearLayoutManager = new LinearLayoutManager(v.getContext(), LinearLayoutManager.VERTICAL, false);
+                      courseRV.setLayoutManager(linearLayoutManager);
+                      courseRV.setAdapter(adapter_home_page);
+                  }
+              });
 
-                // in below two lines we are setting layoutmanager and adapter to our recycler view.
-                courseRV.setLayoutManager(linearLayoutManager);
-                courseRV.setAdapter(courseAdapter);
-            }
-        });
+               // below line is for setting a layout manager for our recycler view.
+               // here we are creating vertical list so we will provide orientation as vertical
+
+           }
+       });
 
         int mScrollY = 0;
 

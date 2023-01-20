@@ -47,6 +47,7 @@ public  class database_manager  extends SQLiteOpenHelper {
     public static final String COLUMN_SEMESTER_CODE = "SEMESTER_CODE";
     public static final String COLUMN_SEMESTER_START_DATE = "SEMESTER_START_DATE";
     public static final String COLUMN_SEMESTER_END_DATE = "SEMESTER_END_DATE";
+    public static final String COLUMN_LOCATION = "LOCATION";
 
     public database_manager(@Nullable Context context) {
         super(context, "attendance.db", null, 1);
@@ -59,7 +60,7 @@ public  class database_manager  extends SQLiteOpenHelper {
         db.execSQL(create_table);
         create_table = "CREATE TABLE HISTORY (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SUBJECT_NAME + " TEXT," + COLUMN_SUBJECT_CODE + " TEXT," + COLUMN_TIME + " TEXT," + COLUMN_DATE + " TEXT," + COLUMN_STATE + " TEXT)";
         db.execSQL(create_table);
-        create_table = "CREATE TABLE CLASSES (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SUBJECT_NAME + " TEXT," + COLUMN_SUBJECT_CODE + " TEXT," + COLUMN_TIME + " TEXT," + COLUMN_DAY + " TEXT," + COLUMN_LTP + " TEXT, " + COLUMN_REPEAT + " TEXT," + COLUMN_DATE + " TEXT )";
+        create_table = "CREATE TABLE CLASSES (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SUBJECT_NAME + " TEXT," + COLUMN_SUBJECT_CODE + " TEXT," + COLUMN_TIME + " TEXT," + COLUMN_DAY + " TEXT," + COLUMN_LTP + " TEXT, " + COLUMN_REPEAT + " TEXT," + COLUMN_LOCATION + "  TEXT," + COLUMN_DATE + " TEXT )";
         db.execSQL(create_table);
         create_table = "CREATE TABLE USER (ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT," + COLUMN_SEMESTER_CODE + " TEXT," + COLUMN_SEMESTER_START_DATE + " TEXT," + COLUMN_SEMESTER_END_DATE + " TEXT)";
         db.execSQL(create_table);
@@ -75,7 +76,7 @@ public  class database_manager  extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_SUBJECT_NAME, subject.getName());
         cv.put(COLUMN_SUBJECT_CODE, subject.getCode());
-        cv.put(COLUMN_ATTENDANCE, subject.getAttendance());
+        cv.put(COLUMN_ATTENDANCE, subject.getAttendance()+"%");
         cv.put(COLUMN_TOTAL_NOW, subject.getTotal_now());
         cv.put(COLUMN_ATTENDED_NOW, subject.getAttended_now());
         cv.put(COLUMN_CLASSES_LEFT, subject.getClasses_left());
@@ -195,7 +196,32 @@ public  class database_manager  extends SQLiteOpenHelper {
         cursor.close();
         return subs;
     }
+    public ArrayList<subject_handler> subject_card_home() {
+        int count = -1;
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<subject_handler> subs = new ArrayList<>();
+        String query = "SELECT * FROM SUBJECTS";
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        count = 0;
+        if (cursor.moveToFirst()) {
+            do {
+                if (count == 0) {
+                    count++;
+                    continue;
+                }
+                int overall_attendance=Integer.parseInt( cursor.getString(3).substring(0, (cursor.getString(3).indexOf('%'))));
 
+                subject_handler sbj=new subject_handler(cursor.getString(1),cursor.getString(2),
+                        overall_attendance,cursor.getInt(4),cursor.getInt(6),cursor.getInt(7));
+                subs.add(sbj);
+            } while (cursor.moveToNext());
+        } else {
+           // subs.add(new subject_handler("err - no subs","",0,0,0,0));
+        }
+        cursor.close();
+        return subs;
+    }
     public boolean add_new_user(user_detail_handler user) {
         SQLiteDatabase db = this.getWritableDatabase();
         if (db == null)
@@ -351,6 +377,26 @@ public  class database_manager  extends SQLiteOpenHelper {
             cursor.close();
             return total;
         }
+    }
+    public String get_value_sub_string(String search,String code) {
+        String total="";
+        String query = "SELECT " + search+ " FROM SUBJECTS WHERE " + COLUMN_SUBJECT_CODE + "='" + code + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        try (Cursor cursor = db.rawQuery(query, null)) {
+            if (cursor.moveToFirst()) {
+                do {
+                    total = cursor.getString(0);
+                } while (cursor.moveToNext());
+            } else {
+
+            }
+            cursor.close();
+            return total;
+        }
+    }
+    public void mark_present()
+    {
+
     }
 
 }

@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/overall_attendance_progress"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
@@ -76,17 +76,17 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/overall_attendance_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxHeight="150dp"
-                    android:text="65"
+                    android:text="65%"
                     android:textColor="#1976D2"
-                    android:textSize="50dp"
+                    android:textSize="42dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/progressBar"
-                    app:layout_constraintStart_toStartOf="@+id/progressBar"
-                    app:layout_constraintTop_toTopOf="@+id/progressBar" />
+                    app:layout_constraintEnd_toEndOf="@+id/overall_attendance_progress"
+                    app:layout_constraintStart_toStartOf="@+id/overall_attendance_progress"
+                    app:layout_constraintTop_toTopOf="@+id/overall_attendance_progress" />
 
 
 
@@ -200,7 +200,7 @@
         >
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/idRVCourse"
             android:nestedScrollingEnabled="false"
             android:paddingBottom="100dp">

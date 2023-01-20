@@ -31,10 +31,11 @@
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/activity_welcome_slider.xml" value="0.25" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/fragment_add_class_non_recurring.xml" value="0.15789473684210525" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/fragment_add_class_recurring.xml" value="0.15789473684210525" />
-        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/fragment_bottom_bar_home.xml" value="0.1" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/fragment_bottom_bar_home.xml" value="0.2" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/sample_layout.xml" value="0.25" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/spalsh_screen.xml" value="0.152" />
         <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/subject_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Akars/Desktop/Attendance/app/src/main/res/layout/subjects_cards_home_page.xml" value="0.15789473684210525" />
       </map>
     </option>
   </component>

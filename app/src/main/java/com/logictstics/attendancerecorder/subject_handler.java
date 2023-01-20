@@ -39,6 +39,15 @@ private int labs_attendance;
         this.tut_attendance = tut_attendance;
     }
 
+    public subject_handler(String name, String code, int attendance, int total_now, int classes_left, int leaves_available) {
+        this.name = name;
+        this.code = code;
+        this.attendance = attendance;
+        this.total_now = total_now;
+        this.classes_left = classes_left;
+        this.leaves_available = leaves_available;
+    }
+
     public String getName() {
         return name;
     }
